@@ -23,7 +23,7 @@ public class Kalkulator {
                 try {
                     // menerima input angka pertama
                     System.out.print("Masukkan angka pertama : ");
-                    angkaPertama = scanner.nextInt();
+                    angkaPertama = scanner.nextDouble();
                     angkaPertamaValidasi = true;
                 } catch (InputMismatchException error) {
                     System.out.println("Maaf, input harus berupa format bilangan bulat. Silahkan coba kembali.");
@@ -39,7 +39,7 @@ public class Kalkulator {
                 try {
                     // menerima input angka kedua
                     System.out.print("Masukkan angka kedua : ");
-                    angkaKedua = scanner.nextInt();
+                    angkaKedua = scanner.nextDouble();
                     angkaKeduaValidasi = true;
                 } catch (InputMismatchException error) {
                     System.out.println("Maaf, input harus berupa format bilangan bulat. Silahkan coba kembali.");
@@ -54,22 +54,22 @@ public class Kalkulator {
             while (!operatorValidasi) {
                 // menerima operator
                 System.out.print("Masukkan operator matematika (+, -, *, /) : ");
-                String operator = scanner.next();
+                char operator = scanner.next().charAt(0);
                 // melakukan perhitungan kalkulasi sesuai dengan operator yg diinputkan
                 switch (operator) {
-                    case "+":
+                    case '+':
                         hasil = angkaPertama + angkaKedua;
                         operatorValidasi = true;
                         break;
-                    case "-":
+                    case '-':
                         hasil = angkaPertama - angkaKedua;
                         operatorValidasi = true;
                         break;
-                    case "*":
+                    case '*':
                         hasil = angkaPertama * angkaKedua;
                         operatorValidasi = true;
                         break;
-                    case "/":
+                    case '/':
                         if (angkaKedua == 0) {
                             System.out.println("Tidak dapat melakukan pembagian dengan 0");
                             operatorValidasi = false;
