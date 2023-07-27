@@ -12,9 +12,9 @@ public class Kalkulator {
         // looping program kembali bila false artinya program berjalan terus, bila true artinya program telah selesai
         while (lanjut) {
             // inisialisasi variabel
-            int angkaPertama = 0;
-            int angkaKedua = 0;
-            int hasil = 0;
+            double angkaPertama = 0;
+            double angkaKedua = 0;
+            double hasil = 0;
 
             // membuat value untuk angka pertama dijalankan kembali atau tidak
             boolean angkaPertamaValidasi = false;
