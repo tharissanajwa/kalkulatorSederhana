@@ -52,41 +52,37 @@ public class Kalkulator {
             boolean operatorValidasi = false;
             // melakukan looping bila ternyata salah memasukkan input operator
             while (!operatorValidasi) {
-                try {
-                    // menerima operator
-                    System.out.print("Masukkan operator matematika (+, -, *, /) : ");
-                    String operator = scanner.next();
-                    // melakukan perhitungan kalkulasi sesuai dengan operator yg diinputkan
-                    switch (operator) {
-                        case "+":
-                            hasil = angkaPertama + angkaKedua;
-                            operatorValidasi = true;
-                            break;
-                        case "-":
-                            hasil = angkaPertama - angkaKedua;
-                            operatorValidasi = true;
-                            break;
-                        case "*":
-                            hasil = angkaPertama * angkaKedua;
-                            operatorValidasi = true;
-                            break;
-                        case "/":
-                            if (angkaKedua == 0) {
-                                System.out.println("Tidak dapat melakukan pembagian dengan 0");
-                                operatorValidasi = false;
-                            } else {
-                                hasil = angkaPertama / angkaKedua;
-                                operatorValidasi = true;
-                            }
-                            break;
-                        default:
-                            System.out.println("Maaf, operator yang Anda masukkan tidak valid! Silahkan coba kembali.");
+                // menerima operator
+                System.out.print("Masukkan operator matematika (+, -, *, /) : ");
+                String operator = scanner.next();
+                // melakukan perhitungan kalkulasi sesuai dengan operator yg diinputkan
+                switch (operator) {
+                    case "+":
+                        hasil = angkaPertama + angkaKedua;
+                        operatorValidasi = true;
+                        break;
+                    case "-":
+                        hasil = angkaPertama - angkaKedua;
+                        operatorValidasi = true;
+                        break;
+                    case "*":
+                        hasil = angkaPertama * angkaKedua;
+                        operatorValidasi = true;
+                        break;
+                    case "/":
+                        if (angkaKedua == 0) {
+                            System.out.println("Tidak dapat melakukan pembagian dengan 0");
                             operatorValidasi = false;
-                            break;
+                        } else {
+                            hasil = angkaPertama / angkaKedua;
+                            operatorValidasi = true;
+                        }
+                        break;
+                    default:
+                        System.out.println("Maaf, operator yang Anda masukkan tidak valid! Silahkan coba kembali.");
+                        operatorValidasi = false;
+                        break;
                     }
-                } catch (InputMismatchException error) {
-                    System.out.println("Input operator harus berupa karakter. Silahkan coba kembali.");
-                }
             }
 
             // memunculkan hasil
