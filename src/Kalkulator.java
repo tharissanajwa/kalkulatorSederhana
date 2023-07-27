@@ -4,58 +4,51 @@ import java.util.Scanner;
 public class Kalkulator {
     public static void main(String[] args) {
 
-        // membuat scanner baru
+        // Membuat objek Scanner untuk menerima input dari pengguna
         Scanner scanner = new Scanner(System.in);
-        // membuat value untuk program dijalankan kembali atau tidak
+        // Variabel 'lanjut' untuk mengontrol apakah program akan berjalan kembali atau tidak
         boolean lanjut = true;
 
-        // looping program kembali bila false artinya program berjalan terus, bila true artinya program telah selesai
         while (lanjut) {
-            // inisialisasi variabel
             double angkaPertama = 0;
             double angkaKedua = 0;
             double hasil = 0;
 
-            // membuat value untuk angka pertama dijalankan kembali atau tidak
+            // Validasi input angka pertama
             boolean angkaPertamaValidasi = false;
-            // melakukan looping bila ternyata salah memasukkan input angka pertama
             while (!angkaPertamaValidasi) {
                 try {
-                    // menerima input angka pertama
                     System.out.print("Masukkan angka pertama : ");
                     angkaPertama = scanner.nextDouble();
                     angkaPertamaValidasi = true;
                 } catch (InputMismatchException error) {
+                    // Menampilkan pesan kesalahan jika input bukan bilangan bulat
                     System.out.println("Maaf, input harus berupa format bilangan bulat. Silahkan coba kembali.");
                     angkaPertamaValidasi = false;
-                    scanner.next(); // fungsinya agar tidak terjadi infinity loop
+                    scanner.next(); // Membaca input berikutnya agar tidak terjadi infinite loop
                 }
             }
 
-            // membuat value untuk angka kedua dijalankan kembali atau tidak
+            // Validasi input angka kedua
             boolean angkaKeduaValidasi = false;
-            // melakukan looping bila ternyata salah memasukkan input angka kedua
             while (!angkaKeduaValidasi) {
                 try {
-                    // menerima input angka kedua
                     System.out.print("Masukkan angka kedua : ");
                     angkaKedua = scanner.nextDouble();
                     angkaKeduaValidasi = true;
                 } catch (InputMismatchException error) {
+                    // Menampilkan pesan kesalahan jika input bukan bilangan bulat
                     System.out.println("Maaf, input harus berupa format bilangan bulat. Silahkan coba kembali.");
                     angkaKeduaValidasi = false;
-                    scanner.next();
+                    scanner.next(); // Membaca input berikutnya agar tidak terjadi infinite loop
                 }
             }
 
-            // membuat value untuk operator dijalankan kembali atau tidak
+            // Validasi input operator matematika
             boolean operatorValidasi = false;
-            // melakukan looping bila ternyata salah memasukkan input operator
             while (!operatorValidasi) {
-                // menerima operator
                 System.out.print("Masukkan operator matematika (+, -, *, /) : ");
                 char operator = scanner.next().charAt(0);
-                // melakukan perhitungan kalkulasi sesuai dengan operator yg diinputkan
                 switch (operator) {
                     case '+':
                         hasil = angkaPertama + angkaKedua;
@@ -71,6 +64,7 @@ public class Kalkulator {
                         break;
                     case '/':
                         if (angkaKedua == 0) {
+                            // Menampilkan pesan kesalahan jika terjadi pembagian dengan 0
                             System.out.println("Tidak dapat melakukan pembagian dengan 0");
                             operatorValidasi = false;
                         } else {
@@ -79,38 +73,40 @@ public class Kalkulator {
                         }
                         break;
                     default:
+                        // Menampilkan pesan kesalahan jika operator yang dimasukkan tidak valid
                         System.out.println("Maaf, operator yang Anda masukkan tidak valid! Silahkan coba kembali.");
                         operatorValidasi = false;
                         break;
-                    }
+                }
             }
 
-            // memunculkan hasil
+            // Menampilkan hasil perhitungan
             System.out.println("Hasil : " + hasil);
 
-            // menanyakan apakah ingin menjalankan program kembali?
+            // Meminta pengguna untuk menjalankan kalkulator kembali atau tidak
             System.out.print("Apakah kalkulator ingin dijalankan kembali ? (ya/tidak) : ");
             String isRunning;
             isRunning = scanner.next();
 
-            // mengatur program akan dijalankan kembali atau tidak sesuai inputan user
             if (isRunning.equalsIgnoreCase("ya")) {
+                // Jika pengguna ingin menjalankan kalkulator kembali, program akan terus berjalan
                 System.out.println("=================================================================================");
                 System.out.println("Program Selanjutnya");
                 lanjut = true;
             } else if (isRunning.equalsIgnoreCase("tidak")) {
+                // Jika pengguna tidak ingin menjalankan kalkulator kembali, program akan selesai
                 System.out.println("Terimakasih! Program Kalkulator Telah Selesai");
                 System.out.println("=================================================================================");
                 lanjut = false;
             } else {
+                // Jika pengguna memasukkan input selain "ya" atau "tidak", program akan selesai
                 System.out.println("Input salah, format harus berupa ya/tidak. Silahkan refresh kembali.");
                 System.out.println("=================================================================================");
                 lanjut = false;
             }
         }
 
-        // menutup scanner
+        // Menutup scanner untuk mencegah resource leak
         scanner.close();
-        }
-
+    }
 }
